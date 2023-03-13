@@ -9,11 +9,12 @@ const main = async() =>{
 
     do{
         opt = await inquirerMenu();
-        console.log(opt);
 
         switch(opt){
             case 1:
                 //Mostrar mensaje
+                const lugar = await leerInput('Ciudad: ');
+                await buquedas.ciudad(lugar)
 
                 //Buscar los lugares
 
@@ -22,6 +23,14 @@ const main = async() =>{
                 //Clima
 
                 //Mostar datos del clima
+                console.log('\nInformacion de la ciudad\n'.green);
+                console.log('Ciudad:', );
+                console.log('Lat:', );
+                console.log('Lng:', );
+                console.log('Temperatura:', );
+                console.log('Minima:', );
+                console.log('Maxima:', );
+
                 break
         }
 
