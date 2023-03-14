@@ -1,6 +1,9 @@
+import * as dotenv from 'dotenv' // see https://github.com/motdotla/dotenv#how-do-i-use-dotenv-with-import
 import { inquirerMenu, leerInput, pausa } from "./helpers/inquirer.js";
 import { Busquedas } from "./models/busquedas.js";
+dotenv.config()
 
+console.log(process.env);
 
 const main = async() =>{
     
@@ -14,7 +17,7 @@ const main = async() =>{
             case 1:
                 //Mostrar mensaje
                 const lugar = await leerInput('Ciudad: ');
-                await buquedas.ciudad(lugar)
+                await buquedas.ciudad(lugar);
 
                 //Buscar los lugares
 
@@ -31,7 +34,7 @@ const main = async() =>{
                 console.log('Minima:', );
                 console.log('Maxima:', );
 
-                break
+                break;
         }
 
         if(opt !== 0) await pausa();
@@ -39,4 +42,4 @@ const main = async() =>{
     }while(opt !== 0);
 }
 
-main();
+// main();
