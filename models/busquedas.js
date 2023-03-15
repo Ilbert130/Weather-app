@@ -76,8 +76,8 @@ class Busquedas{
         if(this.historial.includes(lugar.toLocaleLowerCase())){
             return;
         }
-
-        //TODO: prevenir duplicado
+        this.historial = this.historial.splice(0,5);
+        
         this.historial.unshift(lugar.toLocaleLowerCase());
         //Grabar en DB
         this.guardarDB();
