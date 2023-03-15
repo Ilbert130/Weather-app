@@ -22,12 +22,18 @@ const main = async() =>{
 
                 //Seleccionar el lugar
                 const id = await listarLugares(lugares);
+                if(id === '0') continue;
+
                 const lugarSel = lugares.find( l => l.id === id);
+
+                //Guardar en DB
+                buquedas.agregarHistorial(lugarSel.nombre);
 
                 //Clima
                 const clima = await buquedas.climaLugar(lugarSel.lat, lugarSel.lng);
 
                 //Mostar datos del clima
+                console.clear();
                 console.log('\nInformacion de la ciudad\n'.green);
                 console.log('Ciudad:', lugarSel.nombre);
                 console.log('Lat:', lugarSel.lat);
@@ -37,6 +43,16 @@ const main = async() =>{
                 console.log('Maxima:', clima.max);
                 console.log('Como esta el clima:', clima.desc);
 
+                break;
+
+            case 2: 
+                
+                buquedas.historial.forEach((lugar, i)=> {
+                    const idx = `${i+1}.`.green;
+                    let lugarP = '';
+                    lugar.split(' ').forEach(element => lugarP += ` ${element.charAt(0).toUpperCase() + element.slice(1)}`);
+                    console.log(`${idx}${lugarP}`);
+                });
                 break;
         }
 
